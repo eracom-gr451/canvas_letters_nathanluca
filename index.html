@@ -1,0 +1,42 @@
+<doctype html>
+<html>
+	<head>
+			<script src ="jquery-1.11.2.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="style.css">
+
+	</head>
+	<body>	
+	<script>
+
+		$( document).ready(function() {
+			
+			function ProchaineLettre() {
+
+				var alphabet = new Array("a", "b", "c" );
+				var glyph = alphabet[Math.floor(Math.random()*alphabet.length)];
+
+				$ ("body").append("<h1 class='lettre'>"+glyph+"</h1>");
+
+				
+
+			}; 
+
+			// À étudier: 
+			// setInterval(ProchaineLettre, 20000);
+			// setTimeout
+
+
+  $( ".lettre" ).animate({
+    top: "80vh"
+  }, 1000
+
+  , "linear", function() {
+    // Animation complete.
+});
+		});
+
+	</script>																					
+		
+		
+	</body>
+</html>
