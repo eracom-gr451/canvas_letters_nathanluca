@@ -10,14 +10,44 @@
 
 		$( document).ready(function() {
 			
+			var repeater;
+
+			var numerotation = 0;
+
 			function ProchaineLettre() {
 
+				numerotation = numerotation + 1;
+
 				var alphabet = new Array("a", "b", "c" );
+
 				var glyph = alphabet[Math.floor(Math.random()*alphabet.length)];
 
-				$ ("body").append("<h1 class='lettre'>"+glyph+"</h1>");
+				// position aléatoire entre 5 et 95...
 
-				
+				var position = Math.floor((Math.random() * 95) + 1);
+
+
+
+				// 1. on créé la prochaine lettre.
+				$("body").append("<h1 class='lettre lettre-no-"+numerotation+"'>"+glyph+"</h1>");
+
+				// 2. on lui applique l'animation.
+
+				$( ".lettre-no-"+numerotation ).animate({
+					top: "80vh"
+					}, 1000, "linear", function() {
+					// Animation complete.
+				});
+
+				// on applique du CSS à un élément, exemple:
+
+				$( ".lettre-no-"+numerotation ).css({
+			      "left": position+"%",
+			      "font-weight": "bolder"
+			    });
+
+
+				repeater = setTimeout(ProchaineLettre, 1000);
 
 			}; 
 
@@ -25,14 +55,8 @@
 			// setInterval(ProchaineLettre, 20000);
 			// setTimeout
 
+		ProchaineLettre();
 
-  $( ".lettre" ).animate({
-    top: "80vh"
-  }, 1000
-
-  , "linear", function() {
-    // Animation complete.
-});
 		});
 
 	</script>																					
