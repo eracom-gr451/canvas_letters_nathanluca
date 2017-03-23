@@ -3,6 +3,7 @@
 	<head>
 			<script src ="jquery-1.11.2.min.js"></script>
 			<link rel="stylesheet" type="text/css" href="style.css">
+			<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 
 	</head>
 	<body>	
@@ -14,17 +15,21 @@
 
 			var numerotation = 0;
 
+			var positionverticale = 76;
+
+			var alphabet = new Array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
+
+			var gameover = -16; 
+
 			function ProchaineLettre() {
 
 				numerotation = numerotation + 1;
-
-				var alphabet = new Array("a", "b", "c" );
 
 				var glyph = alphabet[Math.floor(Math.random()*alphabet.length)];
 
 				// position aléatoire entre 5 et 95...
 
-				var position = Math.floor((Math.random() * 95) + 1);
+				var position = Math.floor((Math.random() * 92) + 1);
 
 
 
@@ -34,7 +39,7 @@
 				// 2. on lui applique l'animation.
 
 				$( ".lettre-no-"+numerotation ).animate({
-					top: "80vh"
+					top: positionverticale+ "vh"
 					}, 1000, "linear", function() {
 					// Animation complete.
 				});
@@ -45,7 +50,16 @@
 			      "left": position+"%",
 			      "font-weight": "bolder"
 			    });
+				
+				if (positionverticale < gameover) {
+					alert("gameover lol");
+					}
+				
+				// on diminue la hauteur pour faire monter les lettres
 
+				positionverticale = positionverticale - 10;
+
+				
 
 				repeater = setTimeout(ProchaineLettre, 1000);
 
