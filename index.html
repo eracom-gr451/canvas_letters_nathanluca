@@ -4,13 +4,13 @@
 			<script src ="jquery-1.11.2.min.js"></script>
 			<link rel="stylesheet" type="text/css" href="style.css">
 			<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-
+			<script src="https://eracom-gr451.github.io/projet-canvas-launcher/nextlevel.js"></script>
 	</head>
-	<body>	
+	<body>
 	<script>
 
 		$( document).ready(function() {
-			
+
 			var repeater;
 
 			var numerotation = 0;
@@ -19,9 +19,11 @@
 
 			var alphabet = new Array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
 
-			var gameover = -16; 
+			var gameover = -16;
 
 			function ProchaineLettre() {
+
+				repeater = setTimeout(ProchaineLettre, 1000);
 
 				numerotation = numerotation + 1;
 
@@ -50,31 +52,42 @@
 			      "left": position+"%",
 			      "font-weight": "bolder"
 			    });
-				
+
 				if (positionverticale < gameover) {
-					alert("gameover lol");
+					// alert("gameover lol");
+					NextLevel();
+					stop();
+
 					}
-				
+
 				// on diminue la hauteur pour faire monter les lettres
 
 				positionverticale = positionverticale - 10;
 
-				
 
-				repeater = setTimeout(ProchaineLettre, 1000);
 
-			}; 
 
-			// À étudier: 
+
+			};
+
+			// À étudier:
 			// setInterval(ProchaineLettre, 20000);
 			// setTimeout
 
 		ProchaineLettre();
 
+		function stop() {
+        if (repeater) {
+            clearTimeout(repeater);
+            timer = 0;
+						console.log("called stop");
+        }
+		}
+
 		});
 
-	</script>																					
-		
-	<script src="https://eracom-gr451.github.io/projet-canvas-launcher/nextlevel.js"></script>
+	</script>
+
+
 	</body>
 </html>
